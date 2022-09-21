@@ -6,7 +6,7 @@ const LayoutPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   useEffect(() => {
-    location.pathname === "/" && navigate("/blog");
+    location.pathname === "/" && navigate("/login");
   }, [navigate, location]);
   return (
     <>

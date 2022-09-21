@@ -11,27 +11,27 @@ const BlogPage = lazy(() => import("../pages/blog/"));
 
 const blogRoute = [
   {
-    path: "blog/:username",
+    path: "/:username",
     element: <PostListPage />,
   },
   {
-    path: "blog/:username/:postId",
+    path: "/:username/:postId",
     element: <PostPage />,
   },
   {
-    path: "blog/login",
+    path: "/login",
     element: <LoginPage />,
   },
   {
-    path: "blog",
+    path: "/",
     element: <BlogPage />,
   },
   {
-    path: "blog/register",
+    path: "/register",
     element: <RegisterPage />,
   },
   {
-    path: "blog/write",
+    path: "/write",
     element: <WritePage />,
   },
 ];
