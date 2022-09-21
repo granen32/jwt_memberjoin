@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React from "react";
 import * as S from "./styles";
 import { Link } from "react-router-dom";
 // 회원 가입 로그인폼
