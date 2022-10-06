@@ -1,17 +1,45 @@
-import { createSlice, createSelector, PayloadAction } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  createSelector,
+  PayloadAction,
+  createAction,
+} from "@reduxjs/toolkit";
 import { RootState } from "../../../store";
-import { AuthState } from "../../../types/auth";
+import {
+  AuthState,
+  ChangeField,
+  ChangeFieldResponse,
+} from "../../../types/auth";
+
 export const AUTH = "auth" as const;
 
 const initialState: AuthState = {
-  id: "",
+  register: {
+    username: "",
+    password: "",
+    passwordConfirm: "",
+  },
+  login: {
+    username: "",
+    password: "",
+  },
+  changeField: null,
 };
 const authSlice = createSlice({
   name: AUTH,
   initialState,
   reducers: {
-    sampleAction(state, action: PayloadAction<string>) {
-      state.id = action.payload;
+    editChangeField(state, action: PayloadAction<ChangeFieldResponse>) {
+      const { list } = action.payload;
+      state.changeField &&
+        state.changeField.list.map((prd) => {
+          if (prd.form === "register") {
+            prd.form = prd.value;
+          }
+          if (prd.form === "login") {
+            prd.form = prd.value;
+          }
+        });
     },
   },
 });
