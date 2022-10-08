@@ -1,3 +1,10 @@
+// regiser
+export interface RegisterProps {
+  username: string;
+  password: string;
+  passwordConfirm: string;
+}
+
 export interface ChangeField {
   form: string;
   key: string;
@@ -13,7 +20,9 @@ export interface AuthState {
     username: string;
     password: string;
   };
-  changeField: ChangeFieldResponse | null;
+  changeField: ChangeField;
+  authError: null;
+  auth: null;
 }
 
 export interface ChangeFieldResponse {
@@ -23,4 +32,5 @@ export interface ChangeFieldResponse {
 export interface TextMapProps {
   login: string;
   register: string;
+  [type: string]: string;
 }

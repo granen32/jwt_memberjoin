@@ -7,11 +7,15 @@ import { TextMapProps } from "types/auth";
 const textMap: TextMapProps = {
   login: "로그인",
   register: "회원가입",
+  type: "",
 };
 type Props = {
-  type: string | any;
+  type: string;
+  form: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
-const AuthForm: FC<Props> = ({ type }) => {
+const AuthForm: FC<Props> = ({ type, form, onChange, onSubmit }) => {
   const text = textMap[type];
   return (
     <>
@@ -22,22 +26,27 @@ const AuthForm: FC<Props> = ({ type }) => {
           </div>
           <S.AuthFormBlock>
             <h3>{text}</h3>
-            <form>
+            <form onSubmit={onSubmit}>
               <S.StyledInput
                 autoComplete="username"
                 name="username"
                 placeholder="아이디"
+                onChange={onChange}
               />
               <S.StyledInput
                 autoComplete="new-password"
                 name="password"
                 placeholder="비밀번호"
+                onChange={onChange}
+                type="password"
               />
               {type === "회원가입" && (
                 <S.StyledInput
                   autoComplete="new-password"
                   name="password"
                   placeholder="비밀번호 확인"
+                  onChange={onChange}
+                  type="password"
                 />
               )}
               <S.StyledButton>{text}</S.StyledButton>
