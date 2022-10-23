@@ -42,8 +42,13 @@ const authSlice = createSlice({
         passwordConfirm: passwordConfirm,
       };
     },
-    initializeForm(state, action: PayloadAction<{ form: string[] }>) {
-      const { form } = action.payload.form;
+    initialLizeForm(state, action: PayloadAction<ChangeField>) {
+      const { form, key, value } = action.payload;
+      state.changeField = {
+        form: form,
+        key: key,
+        value: value,
+      };
     },
   },
 });

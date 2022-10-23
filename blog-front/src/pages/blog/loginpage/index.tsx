@@ -1,10 +1,9 @@
 import { useAppDispatch } from "store/index";
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import AuthForm from "../../../components/auth";
 import { authAction } from "store/module/auth";
 const LoginPage = () => {
   const dispatch = useAppDispatch();
-  const form = "";
   const onChage = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = e.target;
     dispatch(
@@ -18,14 +17,18 @@ const LoginPage = () => {
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
+  useEffect(() => {
+    dispatch(
+      authAction.initialLizeForm({
+        form: "login",
+        key: "",
+        value: "",
+      })
+    );
+  }, [dispatch]);
   return (
     <>
-      <AuthForm
-        type="login"
-        onChange={onChage}
-        form={form}
-        onSubmit={onSubmit}
-      ></AuthForm>
+      <AuthForm type="login" onChange={onChage} onSubmit={onSubmit}></AuthForm>
     </>
   );
 };

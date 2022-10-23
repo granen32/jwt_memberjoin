@@ -6,16 +6,15 @@ import { TextMapProps } from "types/auth";
 // 텍스트 맵
 const textMap: TextMapProps = {
   login: "로그인",
-  register: "회원가입",
+  register: "register",
   type: "",
 };
 type Props = {
   type: string;
-  form: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
-const AuthForm: FC<Props> = ({ type, form, onChange, onSubmit }) => {
+const AuthForm: FC<Props> = ({ type, onChange, onSubmit }) => {
   const text = textMap[type];
   return (
     <>
@@ -40,7 +39,7 @@ const AuthForm: FC<Props> = ({ type, form, onChange, onSubmit }) => {
                 onChange={onChange}
                 type="password"
               />
-              {type === "회원가입" && (
+              {type === "register" && (
                 <S.StyledInput
                   autoComplete="new-password"
                   name="password"
